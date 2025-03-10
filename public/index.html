@@ -1,0 +1,16 @@
+<input type="text" id="arabic-name" placeholder="输入阿拉伯语名字">
+<button onclick="generateChineseName()">生成中文名字</button>
+<div id="result"></div>
+
+<script>
+async function generateChineseName() {
+  const arabicName = document.getElementById('arabic-name').value;
+  const response = await fetch('/.netlify/functions/generate-name', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ arabicName })
+  });
+  const result = await response.json();
+  document.getElementById('result').textContent = `中文名：${result.chineseName}`;
+}
+</script>

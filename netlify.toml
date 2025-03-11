@@ -3,6 +3,6 @@ command = "npm install && npm run build && pip install -r netlify/functions/requ
 publish = "dist"
 
 [[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
+from = "/api/generate-name"
+to = "/.netlify/functions/generate-name"
 status = 200

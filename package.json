@@ -1,0 +1,11 @@
+{
+  "name": "name-alchemist",
+  "version": "1.0.0",
+  "description": "根据阿拉伯名生成中文名的工具",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vite": "^5.0.0"
+  }
+}

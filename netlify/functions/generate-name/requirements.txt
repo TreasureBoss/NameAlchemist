@@ -1,2 +1,1 @@
 # 添加Python依赖项
-name-generator==1.0.0

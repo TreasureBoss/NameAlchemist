@@ -4,5 +4,5 @@ publish = "dist"
 
 [[redirects]]
 from = "/api/generate-name"
-to = "/.netlify/functions/generate-name/generate-name"
+to = "/.netlify/functions/generate-name"
 status = 200

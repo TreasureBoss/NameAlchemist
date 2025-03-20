@@ -1,8 +1,8 @@
 [build]
-command = "npm install && npm run build && pip install -r netlify/functions/python/generate-name/python/requirements.txt -t netlify/functions/python/generate-name"
+command = "npm install && npm run build && pip install -r netlify/functions/generate-name/requirements.txt -t netlify/functions/generate-name"
 publish = "dist"
 
 [[redirects]]
 from = "/api/generate-name"
-to = "/.netlify/functions/python/generate-name"
+to = "/.netlify/functions/generate-name/generate-name"
 status = 200

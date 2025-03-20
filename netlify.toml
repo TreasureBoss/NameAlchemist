@@ -1,5 +1,5 @@
 [build]
-command = "npm install && npm run build && pip install -r netlify/functions/requirements.txt -t netlify/functions"
+command = "npm install && npm run build && pip install -r netlify/functions/generate-name/requirements.txt -t netlify/functions/generate-name"
 publish = "dist"
 
 [[redirects]]

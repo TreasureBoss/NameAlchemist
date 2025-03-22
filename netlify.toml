@@ -1,6 +1,7 @@
 [build]
 command = "npm install && npm run build && pip install -r netlify/functions/generate-name/requirements.txt -t netlify/functions/generate-name/python"
 publish = "dist"
+functions = "netlify/functions"  
 
 [[redirects]]
 from = "/api/generate-name"

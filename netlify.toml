@@ -1,5 +1,5 @@
 [build]
-command = "npm install && npm run build && pip install -r netlify/functions/generate-name/requirements.txt -t netlify/functions/generate-name/python"
+command = "npm install && npm run build && pip install -r netlify/functions/generate-name/requirements.txt -t netlify/functions/generate-name/python --disable-pip-version-check"
 publish = "dist"
 functions = "netlify/functions"  
 

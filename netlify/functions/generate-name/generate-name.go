@@ -27,7 +27,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	response := map[string]string{
 		"chineseName": fmt.Sprintf("%s的华文名", reqBody.ArabicName),
-		"meaning": "美好寓意"
+		"meaning": "美好寓意",
 	}
 	json.NewEncoder(w).Encode(response)
 }

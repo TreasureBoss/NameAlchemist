@@ -27,7 +27,7 @@
   <script>
 async function generateChineseName() {
   const arabicName = document.getElementById('arabic-name').value;
-  const response = await fetch('/api/generate-name', {
+  const response = await fetch('/.netlify/functions/generate-name', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ arabicName })

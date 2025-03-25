@@ -1,3 +1,7 @@
-module NameAlchemist
+module github.com/TreasureBoss/NameAlchemist
 
-go 1.24
+go 1.21
+
+require (
+	github.com/aws/aws-lambda-go v1.46.0
+)

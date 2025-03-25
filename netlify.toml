@@ -2,13 +2,3 @@
 command = "npm install && npm run build && (cd netlify/functions/generate-name && go build -o generate-name ./generate-name.go)"
 publish = "dist"
 functions = "netlify/functions"
-
-[[plugins]]
-package = "@netlify/plugin-go"
-
-  [plugins.inputs]
-  version = "1.21"
-
-[build.environment]
-  GO_VERSION = "1.21"
-  GO_IMPORT_PATH = "./netlify/functions/generate-name"

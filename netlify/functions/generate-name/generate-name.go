@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"io/ioutil"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 type RequestBody struct {
@@ -33,6 +34,5 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", Handler)
-	http.ListenAndServe(":8080", nil)
+	lambda.Start(Handler)
 }

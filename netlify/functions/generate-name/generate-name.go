@@ -2,35 +2,41 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"encoding/json"
-	"io/ioutil"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-lambda-go/events"
 )
 
 type RequestBody struct {
 	ArabicName string `json:"arabicName"`
 }
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
+func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	if request.HTTPMethod != "POST" {
+		return events.APIGatewayProxyResponse{
+			StatusCode: http.StatusMethodNotAllowed,
+			Body:       `{"error":"Method not allowed"}`,
+		}, nil
 	}
 
-	body, _ := ioutil.ReadAll(r.Body)
 	var reqBody RequestBody
-	if err := json.Unmarshal(body, &reqBody); err != nil {
-		http.Error(w, "Invalid request body", http.StatusBadRequest)
-		return
+	if err := json.Unmarshal([]byte(request.Body), &reqBody); err != nil {
+		return events.APIGatewayProxyResponse{
+			StatusCode: http.StatusBadRequest,
+			Body:       `{"error":"Invalid request body"}`,
+		}, nil
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	response := map[string]string{
+	responseBody, _ := json.Marshal(map[string]string{
 		"chineseName": fmt.Sprintf("%s的华文名", reqBody.ArabicName),
-		"meaning": "美好寓意",
-	}
-	json.NewEncoder(w).Encode(response)
+		"meaning":     "美好寓意",
+	})
+
+	return events.APIGatewayProxyResponse{
+		StatusCode: http.StatusOK,
+		Headers:    map[string]string{"Content-Type": "application/json"},
+		Body:       string(responseBody),
+	}, nil
 }
 
 func main() {

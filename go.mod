@@ -1,4 +1,4 @@
-module github.com/TreasureBoss/NameAlchemist
+module NameAlchemist
 
 go 1.21
 

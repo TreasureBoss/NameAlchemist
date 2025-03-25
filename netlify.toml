@@ -1,4 +1,4 @@
 [build]
-command = "npm install && npm run build && (cd netlify/functions/generate-name && go build -o generate-name ./generate-name.go)"
+command = "npm install && npm run build && go build -o netlify/functions/generate-name/generate-name netlify/functions/generate-name/generate-name.go"
 publish = "dist"
 functions = "netlify/functions"

@@ -1,4 +1,4 @@
-module github.com/username/NameAlchemist/netlify/functions/generate-name
+module github.com/TreasureBoss/NameAlchemist
 
 go 1.21
 

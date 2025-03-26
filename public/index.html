@@ -16,6 +16,10 @@
     
     <div class="input-container">
       <input type="text" id="arabic-name" placeholder="Please input you name" class="chinese-input">
+      <select id="name-type" class="chinese-input" style="width: 180px">
+        <option value="沉稳型">沉稳型</option>
+        <option value="阳光型">阳光型</option>
+      </select>
       <button onclick="generateChineseName()" class="chinese-button">generateChineseName</button>
     </div>
     
@@ -30,7 +34,7 @@ async function generateChineseName() {
   const response = await fetch('/.netlify/functions/generate-name', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ arabicName })
+    body: JSON.stringify({ arabicName, type: document.getElementById('name-type').value })
   });
   const result = await response.json();
   document.getElementById('result').innerHTML = `

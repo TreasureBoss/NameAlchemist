@@ -17,8 +17,7 @@
     <div class="input-container">
       <input type="text" id="arabic-name" placeholder="Please input you name" class="chinese-input">
       <select id="name-type" class="chinese-input" style="width: 180px">
-        <option value="沉稳型">沉稳型</option>
-        <option value="阳光型">阳光型</option>
+
       </select>
       <button onclick="generateChineseName()" class="chinese-button">generateChineseName</button>
     </div>
@@ -42,6 +41,23 @@ async function generateChineseName() {
     <div class="meaning-result">含义：${result.meaning}</div>
   `;
 }
+
+async function initializeNameTypes() {
+  try {
+    const response = await fetch('/.netlify/functions/get-name-types');
+    const types = await response.json();
+    const select = document.getElementById('name-type');
+    
+    select.innerHTML = types.map(type => 
+      `<option value="${type}">${type}</option>`
+    ).join('');
+  } catch (error) {
+    console.error('Failed to load name types:', error);
+  }
+}
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', initializeNameTypes);
 </script>
 </body>
 </html>

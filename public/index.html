@@ -33,7 +33,10 @@ async function generateChineseName() {
     body: JSON.stringify({ arabicName })
   });
   const result = await response.json();
-  document.getElementById('result').textContent = `${result.chineseName}`;
+  document.getElementById('result').innerHTML = `
+    <div class="name-result">中文名：${result.chineseName}</div>
+    <div class="meaning-result">含义：${result.meaning}</div>
+  `;
 }
 </script>
 </body>

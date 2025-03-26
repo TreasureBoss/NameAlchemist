@@ -164,6 +164,8 @@ body::after {
 }
 
 .chinese-button {
+  font-family: 'ZCOOL XiaoWei', cursive;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   background-color: #8b4513;
   color: white;
   padding: 10px 20px;
@@ -172,6 +174,12 @@ body::after {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+@media (min-width: 769px) {
+  .chinese-button {
+    font-size: 1.2rem;
+  }
 }
 
 .chinese-button:hover {

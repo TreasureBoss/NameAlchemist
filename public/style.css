@@ -4,6 +4,7 @@ body {
   background-size: 400px 400px;
   position: relative;
   z-index: 1;
+}
 
 /* 优化按钮动画 */
 .chinese-button {
@@ -12,6 +13,15 @@ body {
 
 .chinese-button:active {
   transform: scale(0.98);
+}
+
+/* 新增banner文字样式 */
+.banner p {
+  font-family: 'ZCOOL XiaoWei', 'Microsoft YaHei', sans-serif;
+  font-size: 1.4rem;
+  color: #4a4a4a;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* 增强移动端样式 */
@@ -77,9 +87,6 @@ body {
     justify-content: center;
     margin-top: 2rem;
   }
-}
-
-margin-bottom: 40px;
 }
 
 

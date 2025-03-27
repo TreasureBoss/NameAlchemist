@@ -44,15 +44,26 @@ async function generateChineseName() {
 
 async function initializeNameTypes() {
   try {
+    console.log('Fetching name types...');
     const response = await fetch('/.netlify/functions/get-name-types');
-    const types = await response.json();
-    const select = document.getElementById('name-type');
     
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const types = await response.json();
+    console.log('Received name types:', types);
+    
+    const select = document.getElementById('name-type');
     select.innerHTML = types.map(type => 
       `<option value="${type}">${type}</option>`
     ).join('');
+    
+    console.log('Successfully populated name types dropdown');
   } catch (error) {
     console.error('Failed to load name types:', error);
+    document.getElementById('result').innerHTML = 
+      `<div class="error">加载名称类型失败: ${error.message}</div>`;
   }
 }
 

@@ -30,6 +30,14 @@ func handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.API
 		log.Printf("目录信息:\n%s", string(output))
 	}
 
+	pwdCmd := exec.Command("ls", "-l", ".")
+	pwdOutput, pwdErr := pwdCmd.CombinedOutput()
+	if pwdErr != nil {
+		log.Printf("执行pwd命令出错: %v", pwdErr)
+	} else {
+		log.Printf("当前目录:\n%s", string(pwdOutput))
+	}
+
 	file, err := os.Open("../config/name-types.json")
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 500, Body: "{\"error\":\"Failed to open config file\"}"}, err

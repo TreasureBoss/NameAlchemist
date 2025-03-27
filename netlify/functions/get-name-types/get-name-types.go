@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"log"
 	"os"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -17,6 +18,7 @@ type NameConfig struct {
 }
 
 func handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	log.Printf("文件名: get-name-types.go, 用户IP: %s, 请求方法: %s", req.RequestContext.Identity.SourceIP, req.HTTPMethod)
 	file, err := os.Open("../config/name-types.json")
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 500, Body: "{\"error\":\"Failed to open config file\"}"}, err

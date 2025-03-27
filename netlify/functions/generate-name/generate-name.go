@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"os"
@@ -70,6 +71,7 @@ func generateRandomName(nameTypes *NameTypes, reqBody *RequestBody) (string, str
 }
 
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	log.Printf("文件名: generate-name.go, 用户IP: %s, 请求方法: %s", request.RequestContext.Identity.SourceIP, request.HTTPMethod)
 	reqBody, err := validateRequest(request)
 	if err != nil {
 		return events.APIGatewayProxyResponse{
